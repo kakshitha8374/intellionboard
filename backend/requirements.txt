@@ -1,7 +1,9 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 
+# CPU-only torch — must be resolved before sentence-transformers so pip
+# never fetches the default 2.5 GB CUDA wheel from PyPI.
+# 2.3.1 is the first release with an official Python 3.12 wheel on the CPU index.
 torch==2.3.1+cpu
-torchvision==0.18.1+cpu
 
 uvicorn[standard]==0.30.6
 fastapi==0.111.1

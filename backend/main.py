@@ -163,7 +163,12 @@ def root():
 
 @app.get("/health")
 def health():
-    return {"status": "healthy"}
+    from services.embedding_service import is_available as _emb_ok
+    return {
+        "status": "healthy",
+        "embeddings": "available" if _emb_ok() else "unavailable",
+        "ai_search": "available" if _emb_ok() else "degraded — AI features return empty context",
+    }
 
 
 # ============================================================
